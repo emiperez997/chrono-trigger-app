@@ -1,0 +1,8 @@
+export enum Time {
+  PREHISTORY,
+  MIDDLE_AGE,
+  PRESENT,
+  CATACLYSM,
+  FUTURE,
+  END_OF_TIME,
+}

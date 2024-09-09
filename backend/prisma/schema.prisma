@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id      String   @id @default(uuid())
+  name    String   @unique
+  age     Int
+  element Element
+  time    Time
+  picture String[]
+}
+
+model Item {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String
+  type        ItemType
+  picture     String[]
+}
+
+model Place {
+  id          String @id @default(uuid())
+  name        String @unique
+  description String
+  time        Time
+}
+
+model Token {
+  id    String @id @default(uuid())
+  token String @unique
+  email String @unique
+}
+
+enum Element {
+  LIGHT
+  FIRE
+  WATER
+  SHADOW
+  DARK
+}
+
+enum Time {
+  PREHISTORY
+  MIDDLE_AGE
+  PRESENT
+  CATACLYSM
+  FUTURE
+  END_OF_TIME
+}
+
+enum ItemType {
+  WEAPON
+  ARMOR
+  ACCESSORY
+}
